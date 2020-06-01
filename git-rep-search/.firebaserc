@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "github-profiler-search-app": {
+      "hosting": {
+        "git-rep-search": [
+          "github-profiler-search-app"
+        ]
+      }
+    }
+  }
+}

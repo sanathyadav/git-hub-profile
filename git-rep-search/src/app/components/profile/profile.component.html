@@ -1,0 +1,106 @@
+<form action="" class="search-form">
+    <div class="form-group">
+		<nav class="navbar navbar-light bg-dark">
+			<a class="navbar-brand  " href="#"> <i class="fa fa-github-square bg-warning fa-2x " aria-hidden="true"></i></a>
+			<form class="form-inline">
+			  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"[(ngModel)]="username" name="username">
+			  <button class="btn btn-outline-success my-2 my-sm-0"(click)="findProfile()" type="submit">Search</button>
+			</form>
+		  </nav>
+	</div>
+</form>
+ 
+     <div class="container-fluid">
+    <h1 class="text-center text-primary">Welcome to github </h1>
+<div *ngIf="profile">
+    <div class="panel panel-body">
+        
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">
+					<div>
+						<div>
+						  <img
+							style="width: 100%; height: 100%;"
+							class="mt-2"
+							src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="Profile Image"/>
+						  </div>
+						  <h6 class="mb-1 mt-5">
+							{{profile.name}} 
+						  </h6><br>
+						  <tr> <th>COMPANY:</th>
+							  <td><span class="text-primary" *ngIf="profile.company"> {{profile.company}} ></span></td>
+						  </tr>
+						  <tr>
+							  <th>LOCATION:</th>
+							<td><span class="text-primary">
+							  
+								{{profile.location}}</span></td>
+						  </tr>
+						  <tr>
+							  <th>NAME:</th>
+							<td><span class="text-primary">{{profile.login}}</span></td>
+						  </tr>
+						  <br>
+
+						  <button type="button" value="EDIT PROFILE">EDIT PROFILE</button> 
+						</div>
+					
+						
+                   
+				</div>
+				
+					<div class="col-sm-2 ">
+						<ul class=" list-group text-success">
+							<li class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</li>
+							<li class="list-group-item" *ngIf="profile.hireable">Available for hire</li>
+							<li class="list-group-item" *ngIf="profile.blog"><a href="{{profile.blog}}" target="_blank">{{profile.blog}}</a></li>
+							<li class="list-group-item" *ngIf="profile.email"><a href="emailto:{{profile.email}}">{{profile.email}}</a></li>
+						</ul>
+						<div class="mt-5">
+							<p><a href="{{profile.html_url}}" target="_blank" class="btn btn-success btn-sm">View profile on github</a></p>
+						</div> 
+					
+				</div>
+				<div class="card w-50 h-50 ">
+					<div class="card-body bg-dark ">
+							<div class="row">
+								<div class="col-12 pl-5 pt-2 ">
+									<button class="button btn-danger "type="submit"(click)=" followers()">{{profile.followers}}:Followers</button>
+									<button class="button btn-warning ml-5"type="submit"(click)=" following()">{{profile.following}}:Following</button>
+									<button class="button btn-primary ml-5"type="submit"(click)=" gits()">{{profile.public_gists}}: gists</button>
+									<button class="button btn-success ml-5"type="submit"(click)="repository() ">{{profile.public_repos}}:Repos</button>
+								</div>
+							</div>
+						</div>
+					</div> 
+					<div class="card-body" >
+						<div class="card-row" *ngFor="let repo of repos">
+							
+						
+								<ul class="clearfix  w-30 h-50">
+								<li>
+								{{repo.name}} <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-secondary pull-right pl-5">View this project on github</a>
+								{{repo.description}}
+								</li>
+								</ul>
+							
+							
+							
+						</div>
+						
+					</div>
+		</div>
+	</div>
+</div>
+	 </div>
+	
+
+	 
+				
+		
+	 
+	 
+
+
+    
